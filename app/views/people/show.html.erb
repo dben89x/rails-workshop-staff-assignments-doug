@@ -1,1 +1,19 @@
-<h1><%= @person.full_name %></h1>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>
+        Name
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <h1><%= @person.full_name %></h1>
+      </td>
+      <td>
+        <%= link_to "Edit #{@person.full_name}", edit_person_path(@person) %>
+      </td>
+    </tr>
+  </tbody>
+</table>

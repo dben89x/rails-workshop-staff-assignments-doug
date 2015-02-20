@@ -12,12 +12,25 @@ class PeopleController < ApplicationController
     @person = Person.new
   end
 
+  def edit
+    @person = Person.find(params[:id])
+  end
+
   def create
     @person = Person.new(params.require(:person).permit(:first_name, :last_name, :title))
     if @person.save
       redirect_to root_path, notice: "Person was created!"
     else
       render :new
+    end
+  end
+
+  def update
+    @person = Person.find(params[:id])
+    if @person.update(params.require(:person).permit(:first_name, :last_name, :title))
+      redirect_to person_path(@person)
+    else
+      render :edit
     end
   end
 

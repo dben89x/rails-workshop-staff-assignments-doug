@@ -19,6 +19,16 @@ feature 'Person' do
     within 'h1' do
       expect(page).to have_content(person.full_name)
     end
+
+    click_on "Edit"
+    fill_in "Title", with: "Dr."
+    fill_in "First name", with: "Funken"
+    fill_in "Last name", with: "Duncan"
+    click_on "Update"
+
+    within '.table' do
+      expect(page).to have_content('Dr. Funken Duncan')
+    end
   end
 
 end
